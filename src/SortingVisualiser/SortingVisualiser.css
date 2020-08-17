@@ -1,5 +1,11 @@
 .arrayBar {
-    width: 2px;
     background-color: coral;
+    width: 0.5%;
+    display: inline-block;
+    margin: 0 2px;
 }
 
+.arrayContainer {
+    position: relative;
+    width: 100%;
+}
