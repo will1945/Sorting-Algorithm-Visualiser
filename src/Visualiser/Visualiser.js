@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import arrayBar from './SortingVisualiser.css'
-import bubbleSorted from '../SortingAlgorithms/BubbleSort.js'
-import MergeSort from '../SortingAlgorithms/MergeSort.js'
+import arrayBar from './Visualiser.css'
+import bubbleSorted from '../Algorithms/BubbleSort.js'
+import MergeSort from '../Algorithms/MergeSort.js'
 import testArraysEqual from '../Tests/TestArraysEqual.js'
-import randomNumberGen from '../GeneratorFunctions/RandomNumberGen.js'
-import javaScriptSortedArray from '../GeneratorFunctions/JavaScriptSortedArrayGen.js'
+import randomNumberGen from '../HelperFunctions/RandomNumberGen.js'
+import javaScriptSortedArray from '../HelperFunctions/JavaScriptSortedArrayGen.js'
 import automateSortingAlgorithmsTest from '../Tests/AutomateSortingAlgorithmsTest.js'
 
 
@@ -36,19 +36,29 @@ class SortingVisualiser extends Component {
 
 
     bubbleSort() {
-        console.log(testArraysEqual(javaScriptSortedArray(this.state.array), bubbleSorted(this.state.array)))
+        const bubbleSortAnimations = bubbleSorted(this.state.array)
+        for (let i = 0; i < bubbleSortAnimations.length; i++) {
+            const allArrayBars = document.getElementsByClassName('arrayBars')
+            const [firstBarIndex, secondBarIndex] = bubbleSortAnimations[i]
+            const firstBarStyle = allArrayBars[firstBarIndex].style
+            const secondBarStyle = allArrayBars[secondBarIndex].style
+            setTimeout(() => {
+                firstBarStyle.backgroundColor = 'orange'
+                secondBarStyle.backgroundColor = 'orange'
+            }, i * 5);
+        }
     }
 
 
 
     render() {
         return (
-            <div className="arrayContainer">
+            <div className="container">
             {this.state.array.map((value, index) => (
                 <div 
-                  className="arrayBar" 
-                  key={index}
+                  className="arrayBars" 
                   style={{height: `${value}px`, width: `${150/this.state.array.length}px`}}
+                  key={index}
                   > 
                 </div>
             ))}

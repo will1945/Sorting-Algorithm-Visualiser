@@ -1,11 +1,11 @@
-.arrayBar {
+.arrayBars {
     background-color: coral;
     width: 0.5%;
     display: inline-block;
     margin: 0 2px;
 }
 
-.arrayContainer {
+.container {
     position: relative;
     width: 100%;
 }

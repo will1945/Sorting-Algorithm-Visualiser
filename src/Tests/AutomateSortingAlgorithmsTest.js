@@ -1,8 +1,8 @@
 import React from 'react';
-import RandomNumberGen from '../GeneratorFunctions/RandomNumberGen.js'
+import RandomNumberGen from '../HelperFunctions/RandomNumberGen.js'
 import testArraysEqual from './TestArraysEqual.js';
-import javaScriptSortedArray from '../GeneratorFunctions/JavaScriptSortedArrayGen.js'
-import bubbleSorted from '../SortingAlgorithms/BubbleSort.js'
+import javaScriptSortedArray from '../HelperFunctions/JavaScriptSortedArrayGen.js'
+import bubbleSorted from '../Algorithms/BubbleSort.js'
 
 const automateSortingAlgorithmsTest = () => {
     for (let i = 0; i < 250 ; i++) {

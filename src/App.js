@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import SortingVisualiser from './SortingVisualiser/SortingVisualiser.js'
+import Visualiser from './Visualiser/Visualiser.js'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-         <SortingVisualiser></SortingVisualiser>
+         <Visualiser></Visualiser>
       </header>
     </div>
   );
