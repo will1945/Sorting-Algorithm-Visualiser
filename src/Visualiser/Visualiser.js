@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import arrayBar from './Visualiser.css'
+import arrayBars from './Visualiser.css'
 import bubbleSorted from '../Algorithms/BubbleSort.js'
 import MergeSort from '../Algorithms/MergeSort.js'
 import testArraysEqual from '../Tests/TestArraysEqual.js'
 import randomNumberGen from '../HelperFunctions/RandomNumberGen.js'
 import javaScriptSortedArray from '../HelperFunctions/JavaScriptSortedArrayGen.js'
 import automateSortingAlgorithmsTest from '../Tests/AutomateSortingAlgorithmsTest.js'
+
 
 
 class SortingVisualiser extends Component {
@@ -23,8 +24,8 @@ class SortingVisualiser extends Component {
 
     resetArray() {
         const newArray = []
-        for (let i = 0; i < 150; i++) {
-          newArray.push(randomNumberGen(5,500));
+        for (let i = 0; i < 30; i++) {
+          newArray.push(randomNumberGen(5,100));
         }
         this.setState({array: newArray})
     }
@@ -35,19 +36,59 @@ class SortingVisualiser extends Component {
     }
 
 
+
+/*
+    bubbleSort() {
+        const animations = bubbleSorted(this.state.array);
+        for (let i = 0; i < animations.length; i++) {
+          const arrayBars = document.getElementsByClassName('arrayBars');
+          const isColorChange = i % 3 !== 2;
+          if (isColorChange) {
+            const [barOneIdx, barTwoIdx] = animations[i];
+            const barOneStyle = arrayBars[barOneIdx].style;
+            const barTwoStyle = arrayBars[barTwoIdx].style;
+            const color = i % 3 === 0 ? 'red' : 'green';
+            setTimeout(() => {
+              barOneStyle.backgroundColor = color;
+              barTwoStyle.backgroundColor = color;
+            }, i * 100);
+          } else {
+            setTimeout(() => {
+              const [barOneIdx, newHeight] = animations[i];
+              const barOneStyle = arrayBars[barOneIdx].style;
+              barOneStyle.height = `${newHeight}px`;
+            }, i * ANIMATION_SPEED_MS);
+          }
+        }
+      }
+
+*/
+
+
     bubbleSort() {
         const bubbleSortAnimations = bubbleSorted(this.state.array)
-        for (let i = 0; i < bubbleSortAnimations.length; i++) {
+        for (let i = 0; i < bubbleSortAnimations[1].length; i++) {
             const allArrayBars = document.getElementsByClassName('arrayBars')
-            const [firstBarIndex, secondBarIndex] = bubbleSortAnimations[i]
-            const firstBarStyle = allArrayBars[firstBarIndex].style
-            const secondBarStyle = allArrayBars[secondBarIndex].style
+            const [firstBarIndex, secondBarIndex] = bubbleSortAnimations[0][i]
+            const [firstBarHeight, secondBarHeight] = bubbleSortAnimations[1][i]
+
             setTimeout(() => {
-                firstBarStyle.backgroundColor = 'orange'
-                secondBarStyle.backgroundColor = 'orange'
-            }, i * 5);
+                allArrayBars[firstBarIndex].style.backgroundColor = 'white'
+                allArrayBars[secondBarIndex].style.backgroundColor = 'white'
+                allArrayBars[firstBarIndex].style.height = `${firstBarHeight}px`        
+                allArrayBars[secondBarIndex].style.height = `${secondBarHeight}px`
+
+                allArrayBars[firstBarIndex].style.backgroundColor = 'orange'
+
+            }, i * 50);
         }
     }
+      
+
+
+
+
+
 
 
 
