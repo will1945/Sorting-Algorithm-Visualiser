@@ -11,9 +11,11 @@ import automateSortingAlgorithmsTest from '../Tests/AutomateSortingAlgorithmsTes
 
 class SortingVisualiser extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             array: [],
+            animationSpeed: 10,
+            arraySize: 30
         };
     }
 
@@ -24,8 +26,8 @@ class SortingVisualiser extends Component {
 
     resetArray() {
         const newArray = []
-        for (let i = 0; i < 30; i++) {
-          newArray.push(randomNumberGen(5,100));
+        for (let i = 0; i < this.state.arraySize; i++) {
+          newArray.push(randomNumberGen(5,500))
         }
         this.setState({array: newArray})
     }
@@ -36,61 +38,35 @@ class SortingVisualiser extends Component {
     }
 
 
-
-/*
     bubbleSort() {
-        const animations = bubbleSorted(this.state.array);
-        for (let i = 0; i < animations.length; i++) {
-          const arrayBars = document.getElementsByClassName('arrayBars');
-          const isColorChange = i % 3 !== 2;
-          if (isColorChange) {
-            const [barOneIdx, barTwoIdx] = animations[i];
-            const barOneStyle = arrayBars[barOneIdx].style;
-            const barTwoStyle = arrayBars[barTwoIdx].style;
-            const color = i % 3 === 0 ? 'red' : 'green';
-            setTimeout(() => {
-              barOneStyle.backgroundColor = color;
-              barTwoStyle.backgroundColor = color;
-            }, i * 100);
-          } else {
-            setTimeout(() => {
-              const [barOneIdx, newHeight] = animations[i];
-              const barOneStyle = arrayBars[barOneIdx].style;
-              barOneStyle.height = `${newHeight}px`;
-            }, i * ANIMATION_SPEED_MS);
-          }
-        }
-      }
-
-*/
-
-
-    bubbleSort() {
-        const bubbleSortAnimations = bubbleSorted(this.state.array)
-        for (let i = 0; i < bubbleSortAnimations[1].length; i++) {
+        const bubbleSortVisualisations = bubbleSorted(this.state.array)
+        console.log(bubbleSortVisualisations[0])
+        console.log(document.getElementsByClassName('arrayBars'))
+        for (let i = 0; i < bubbleSortVisualisations.length; i++) {
             const allArrayBars = document.getElementsByClassName('arrayBars')
-            const [firstBarIndex, secondBarIndex] = bubbleSortAnimations[0][i]
-            const [firstBarHeight, secondBarHeight] = bubbleSortAnimations[1][i]
+            if (bubbleSortVisualisations[i][0] === "change colour") {
+                const colour = bubbleSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
 
-            setTimeout(() => {
-                allArrayBars[firstBarIndex].style.backgroundColor = 'white'
-                allArrayBars[secondBarIndex].style.backgroundColor = 'white'
-                allArrayBars[firstBarIndex].style.height = `${firstBarHeight}px`        
-                allArrayBars[secondBarIndex].style.height = `${secondBarHeight}px`
+                const firstBarIndex = bubbleSortVisualisations[i][1]
+                const secondBarIndex = bubbleSortVisualisations[i][2]
+                setTimeout(() => {
+                    allArrayBars[firstBarIndex].style.backgroundColor = colour
+                    allArrayBars[secondBarIndex].style.backgroundColor = colour
+                }, i * this.state.animationSpeed)
+            } else {
+                setTimeout(() => {
+                    const firstBarIndex = bubbleSortVisualisations[i][1]
+                    const updateFirstBarHeight = bubbleSortVisualisations[i][2]
+                    const secondBarIndex = bubbleSortVisualisations[i][3]
+                    const updateSecondBarHeight = bubbleSortVisualisations[i][4]
 
-                allArrayBars[firstBarIndex].style.backgroundColor = 'orange'
-
-            }, i * 50);
+                    allArrayBars[firstBarIndex].style.height = `${updateFirstBarHeight}px`;
+                    allArrayBars[secondBarIndex].style.height = `${updateSecondBarHeight}px`;
+                  }, i * this.state.animationSpeed);
+            } 
         }
     }
       
-
-
-
-
-
-
-
 
     render() {
         return (
