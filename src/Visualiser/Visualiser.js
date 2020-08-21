@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import arrayBars from './Visualiser.css'
 import bubbleSorted from '../Algorithms/BubbleSort.js'
+import selectionSorted from '../Algorithms/SelectionSort.js'
 import MergeSort from '../Algorithms/MergeSort.js'
 import testArraysEqual from '../Tests/TestArraysEqual.js'
 import randomNumberGen from '../HelperFunctions/RandomNumberGen.js'
@@ -14,13 +15,13 @@ class SortingVisualiser extends Component {
         super(props)
         this.state = {
             array: [],
-            animationSpeed: 10,
-            arraySize: 30
-        };
+            animationSpeed: 100,
+            arraySize: 20
+        }  
     }
 
     componentDidMount() {
-        this.resetArray();
+        this.resetArray()
     }
 
 
@@ -32,16 +33,10 @@ class SortingVisualiser extends Component {
         this.setState({array: newArray})
     }
 
-    
-    mergeSort() {
-
-    }
-
 
     bubbleSort() {
         const bubbleSortVisualisations = bubbleSorted(this.state.array)
-        console.log(bubbleSortVisualisations[0])
-        console.log(document.getElementsByClassName('arrayBars'))
+
         for (let i = 0; i < bubbleSortVisualisations.length; i++) {
             const allArrayBars = document.getElementsByClassName('arrayBars')
             if (bubbleSortVisualisations[i][0] === "change colour") {
@@ -60,13 +55,34 @@ class SortingVisualiser extends Component {
                     const secondBarIndex = bubbleSortVisualisations[i][3]
                     const updateSecondBarHeight = bubbleSortVisualisations[i][4]
 
-                    allArrayBars[firstBarIndex].style.height = `${updateFirstBarHeight}px`;
-                    allArrayBars[secondBarIndex].style.height = `${updateSecondBarHeight}px`;
-                  }, i * this.state.animationSpeed);
+                    allArrayBars[firstBarIndex].style.height = `${updateFirstBarHeight}px`
+                    allArrayBars[secondBarIndex].style.height = `${updateSecondBarHeight}px`
+                  }, i * this.state.animationSpeed)
             } 
         }
     }
       
+
+    selectionSort() {
+        console.log(this.state.array)
+        const selectionSortVisualisations = selectionSorted(this.state.array)
+        console.log(selectionSorted(this.state.array))
+
+        for (let i = 0; i < selectionSortVisualisations.length; i++) {
+            const allArrayBars = document.getElementsByClassName('arrayBars')
+            setTimeout(() => {
+              allArrayBars[i].style.height = `${selectionSortVisualisations[i]}px`
+              }, i * this.state.animationSpeed)
+        }
+    }
+
+
+
+
+    mergeSort() {
+
+    }
+
 
     render() {
         return (
@@ -81,14 +97,12 @@ class SortingVisualiser extends Component {
             ))}
             <button onClick={() => this.resetArray()}>Generate New Array</button>
             <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+            <button onClick={() => this.selectionSort()}>Selection Sort</button>
             <button onClick={() => this.mergeSort()}>Merge Sort</button>
             <button onClick={() => automateSortingAlgorithmsTest()}>Test Sorting Algorithm (For developer use)</button>
             </div>
         )
     }
 }
-
-
-
 
 export default SortingVisualiser

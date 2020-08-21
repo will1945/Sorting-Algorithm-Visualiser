@@ -2,7 +2,6 @@ import React from 'react'
 
 const bubbleSorted = (array) => {
     let visualisationArray = []
-    //let changeHeightArray = []
     let count = 0
     for (let i = 0; i < array.length; i++) {
         for (let j =0; j < array.length-i; j++) {
