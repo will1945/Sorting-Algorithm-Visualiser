@@ -2,7 +2,7 @@ import React from 'react'
 
 const bubbleSorted = (array) => {
     let visualisationArray = []
-    let count = 0
+    //let count = 0
     for (let i = 0; i < array.length; i++) {
         for (let j =0; j < array.length-i; j++) {
           if (array[j] > array[j + 1]) {
@@ -14,11 +14,11 @@ const bubbleSorted = (array) => {
             array[j + 1] = temp
 
             visualisationArray.push(["change height", j, array[j], j+1, array[j+1]])
-            count++
+            //count++
           }   
         }
       }
-   console.log(count)
+   //console.log(count)
    return visualisationArray
 }
 

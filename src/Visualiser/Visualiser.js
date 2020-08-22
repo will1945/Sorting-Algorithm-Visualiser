@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import arrayBars from './Visualiser.css'
 import bubbleSorted from '../Algorithms/BubbleSort.js'
 import selectionSorted from '../Algorithms/SelectionSort.js'
-import MergeSort from '../Algorithms/MergeSort.js'
+import mergeSorted from '../Algorithms/MergeSort.js'
 import testArraysEqual from '../Tests/TestArraysEqual.js'
 import randomNumberGen from '../HelperFunctions/RandomNumberGen.js'
 import javaScriptSortedArray from '../HelperFunctions/JavaScriptSortedArrayGen.js'
 import automateSortingAlgorithmsTest from '../Tests/AutomateSortingAlgorithmsTest.js'
+
 
 
 
@@ -15,8 +16,8 @@ class SortingVisualiser extends Component {
         super(props)
         this.state = {
             array: [],
-            animationSpeed: 100,
-            arraySize: 20
+            animationSpeed: 500,
+            arraySize: 20,
         }  
     }
 
@@ -42,21 +43,21 @@ class SortingVisualiser extends Component {
             if (bubbleSortVisualisations[i][0] === "change colour") {
                 const colour = bubbleSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
 
-                const firstBarIndex = bubbleSortVisualisations[i][1]
-                const secondBarIndex = bubbleSortVisualisations[i][2]
+                const firstBarIdx = bubbleSortVisualisations[i][1]
+                const secondBarIdx = bubbleSortVisualisations[i][2]
                 setTimeout(() => {
-                    allArrayBars[firstBarIndex].style.backgroundColor = colour
-                    allArrayBars[secondBarIndex].style.backgroundColor = colour
+                    allArrayBars[firstBarIdx].style.backgroundColor = colour
+                    allArrayBars[secondBarIdx].style.backgroundColor = colour
                 }, i * this.state.animationSpeed)
             } else {
                 setTimeout(() => {
-                    const firstBarIndex = bubbleSortVisualisations[i][1]
+                    const firstBarIdx = bubbleSortVisualisations[i][1]
                     const updateFirstBarHeight = bubbleSortVisualisations[i][2]
-                    const secondBarIndex = bubbleSortVisualisations[i][3]
+                    const secondBarIdx = bubbleSortVisualisations[i][3]
                     const updateSecondBarHeight = bubbleSortVisualisations[i][4]
 
-                    allArrayBars[firstBarIndex].style.height = `${updateFirstBarHeight}px`
-                    allArrayBars[secondBarIndex].style.height = `${updateSecondBarHeight}px`
+                    allArrayBars[firstBarIdx].style.height = `${updateFirstBarHeight}px`
+                    allArrayBars[secondBarIdx].style.height = `${updateSecondBarHeight}px`
                   }, i * this.state.animationSpeed)
             } 
         }
@@ -64,15 +65,30 @@ class SortingVisualiser extends Component {
       
 
     selectionSort() {
-        console.log(this.state.array)
         const selectionSortVisualisations = selectionSorted(this.state.array)
-        console.log(selectionSorted(this.state.array))
 
         for (let i = 0; i < selectionSortVisualisations.length; i++) {
             const allArrayBars = document.getElementsByClassName('arrayBars')
-            setTimeout(() => {
-              allArrayBars[i].style.height = `${selectionSortVisualisations[i]}px`
-              }, i * this.state.animationSpeed)
+            if (selectionSortVisualisations[i][0] === "change colour") {
+                const colour = selectionSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
+
+                const firstBarIdx = selectionSortVisualisations[i][1]
+                const secondBarIdx = selectionSortVisualisations[i][2]
+                setTimeout(() => {
+                    allArrayBars[firstBarIdx].style.backgroundColor = colour
+                    allArrayBars[secondBarIdx].style.backgroundColor = colour
+                }, i * this.state.animationSpeed)
+            } else {
+                setTimeout(() => {
+                    const firstBarIdx = selectionSortVisualisations[i][1]
+                    const updateFirstBarHeight = selectionSortVisualisations[i][2]
+                    const secondBarIdx = selectionSortVisualisations[i][3]
+                    const updateSecondBarHeight = selectionSortVisualisations[i][4]
+
+                    allArrayBars[firstBarIdx].style.height = `${updateFirstBarHeight}px`
+                    allArrayBars[secondBarIdx].style.height = `${updateSecondBarHeight}px`
+                  }, i * this.state.animationSpeed)
+            } 
         }
     }
 
@@ -80,18 +96,42 @@ class SortingVisualiser extends Component {
 
 
     mergeSort() {
+        const mergeSortVisualisations = mergeSorted(this.state.array)
 
+        for (let i = 0; i < mergeSortVisualisations.length; i++) {
+            const allArrayBars = document.getElementsByClassName('arrayBars')
+            if (mergeSortVisualisations[i][0] === "change colour") {
+                const colour = mergeSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
+
+                const firstBarIdx = mergeSortVisualisations[i][1]
+                const secondBarIdx = mergeSortVisualisations[i][2]
+                setTimeout(() => {
+                    allArrayBars[firstBarIdx].style.backgroundColor = colour
+                    allArrayBars[secondBarIdx].style.backgroundColor = colour
+                }, i * this.state.animationSpeed)
+            } else {
+                setTimeout(() => {
+                    const firstBarIdx = mergeSortVisualisations[i][1]
+                    const updateFirstBarHeight = mergeSortVisualisations[i][2]
+                    const secondBarIdx = mergeSortVisualisations[i][3]
+                    const updateSecondBarHeight = mergeSortVisualisations[i][4]
+
+                    allArrayBars[firstBarIdx].style.height = `${updateFirstBarHeight}px`
+                    allArrayBars[secondBarIdx].style.height = `${updateSecondBarHeight}px`
+                  }, i * this.state.animationSpeed)
+            } 
+        }
     }
 
 
     render() {
         return (
             <div className="container">
-            {this.state.array.map((value, index) => (
+            {this.state.array.map((value, idx) => (
                 <div 
                   className="arrayBars" 
                   style={{height: `${value}px`, width: `${150/this.state.array.length}px`}}
-                  key={index}
+                  key={idx}
                   > 
                 </div>
             ))}
