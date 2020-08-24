@@ -2,7 +2,7 @@ import React from 'react'
 
 
 const mergeSorted = (array) => {
-    visualisationsArray = []
+    //visualisationsArray = []
     if (array.length <= 1) {
       return array
     }
