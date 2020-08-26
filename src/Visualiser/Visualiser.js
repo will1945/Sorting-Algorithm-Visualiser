@@ -16,8 +16,8 @@ class SortingVisualiser extends Component {
         super(props)
         this.state = {
             array: [],
-            animationSpeed: 50,
-            arraySize: 10,
+            animationSpeed: 10,
+            arraySize: 100,
         }  
     }
 
@@ -42,7 +42,6 @@ class SortingVisualiser extends Component {
             const allArrayBars = document.getElementsByClassName('arrayBars')
             if (bubbleSortVisualisations[i][0] === "change colour") {
                 const colour = bubbleSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
-
                 const firstBarIdx = bubbleSortVisualisations[i][1]
                 const secondBarIdx = bubbleSortVisualisations[i][2]
                 setTimeout(() => {
@@ -71,7 +70,6 @@ class SortingVisualiser extends Component {
             const allArrayBars = document.getElementsByClassName('arrayBars')
             if (selectionSortVisualisations[i][0] === "change colour") {
                 const colour = selectionSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
-
                 const firstBarIdx = selectionSortVisualisations[i][1]
                 const secondBarIdx = selectionSortVisualisations[i][2]
                 setTimeout(() => {
@@ -103,7 +101,6 @@ class SortingVisualiser extends Component {
             const allArrayBars = document.getElementsByClassName('arrayBars')
             if (mergeSortVisualisations[i][0] === "change colour") {
                 const colour = mergeSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
-
                 const firstBarIdx = mergeSortVisualisations[i][1]
                 const secondBarIdx = mergeSortVisualisations[i][2]
                 setTimeout(() => {
@@ -114,11 +111,10 @@ class SortingVisualiser extends Component {
                 setTimeout(() => {
                     const firstBarIdx = mergeSortVisualisations[i][1]
                     const updateFirstBarHeight = mergeSortVisualisations[i][2]
-                    const secondBarIdx = mergeSortVisualisations[i][3]
-                    const updateSecondBarHeight = mergeSortVisualisations[i][4]
-
+                    //const secondBarIdx = mergeSortVisualisations[i][3]
+                    //const updateSecondBarHeight = mergeSortVisualisations[i][4]
                     allArrayBars[firstBarIdx].style.height = `${updateFirstBarHeight}px`
-                    allArrayBars[secondBarIdx].style.height = `${updateSecondBarHeight}px`
+                    //allArrayBars[secondBarIdx].style.height = `${updateSecondBarHeight}px`
                   }, i * this.state.animationSpeed)
             } 
         }
