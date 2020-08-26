@@ -16,8 +16,8 @@ class SortingVisualiser extends Component {
         super(props)
         this.state = {
             array: [],
-            animationSpeed: 500,
-            arraySize: 20,
+            animationSpeed: 50,
+            arraySize: 10,
         }  
     }
 
@@ -97,6 +97,7 @@ class SortingVisualiser extends Component {
 
     mergeSort() {
         const mergeSortVisualisations = mergeSorted(this.state.array)
+        console.log(mergeSortVisualisations)
 
         for (let i = 0; i < mergeSortVisualisations.length; i++) {
             const allArrayBars = document.getElementsByClassName('arrayBars')
