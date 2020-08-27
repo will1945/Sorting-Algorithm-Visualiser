@@ -5,6 +5,8 @@ import javaScriptSortedArray from '../HelperFunctions/JavaScriptSortedArrayGen.j
 import bubbleSorted from '../Algorithms/BubbleSort.js'
 import selectionSorted from '../Algorithms/SelectionSort.js'
 import mergeSorted from '../Algorithms/MergeSort.js'
+import insertionSorted from '../Algorithms/InsertionSort.js'
+
 
 
 
@@ -14,7 +16,7 @@ const automateSortingAlgorithmsTest = () => {
         for (let j = 0; j < RandomNumberGen(1, 250); j++) {
             array.push(RandomNumberGen(1,1000))
         }
-        console.log(testArraysEqual(javaScriptSortedArray(array), mergeSorted(array)))
+        console.log(testArraysEqual(javaScriptSortedArray(array), insertionSorted(array)))
     }
 }
 

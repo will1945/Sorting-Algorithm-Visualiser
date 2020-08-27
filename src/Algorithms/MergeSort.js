@@ -4,7 +4,7 @@ import React from 'react'
     const tempArray = array.slice()
     const visualisationsArray = []
     mergeSort(array, visualisationsArray, tempArray, 0, array.length - 1)
-    return visualisationsArray;
+    return visualisationsArray
   }
   
   
