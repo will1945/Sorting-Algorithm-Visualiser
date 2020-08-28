@@ -1,0 +1,47 @@
+
+.Banner {
+    position: fixed;
+    top: 0px;
+    margin: 0px;
+    height: 50px;
+    display: inline-block;
+    background-color:#001519;
+    width: 100%;
+}
+
+.Banner button {
+    color: #00d4FF;
+    border-color: #00d4FF;
+    font-weight: 2000;
+    background: transparent;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-size: 13px;
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 25px 10px 0 0;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;  
+}
+
+
+.Banner button:first-of-type {
+    margin: 0px 80px;
+    border-radius: 18px 8px 8px 18px;
+}
+
+.Banner button:last-of-type {
+    margin: 0px 80px;
+    border-radius: 8px 18px 18px 8px;
+}
+
+.Banner button:active{
+    color: #72FF00;
+    border-color: #72FF00;
+}
+
+.Banner button:focus{
+    color: #72FF00;
+    border-color: #72FF00;
+}

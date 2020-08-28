@@ -1,11 +1,27 @@
 .arrayBars {
     background-color: orange;
-    width: 0.5%;
     display: inline-block;
     margin: 0 1px;
 }
 
 .container {
     position: relative;
-    width: 100%;
+    background-color: #001519;
+    margin: 65px;
+    height: 450px;
+}
+
+.arraySize {
+    color: #00d4FF;
+    position: relative;
+    margin: 10px;
+    font-size: 18px;
+}
+
+
+.visualisationSpeed {
+    color: #00d4FF;
+    position: relative;
+    margin: 10px 10px;
+    font-size: 18px;
 }
