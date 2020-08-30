@@ -8,21 +8,21 @@ import testArraysEqual from '../Tests/TestArraysEqual.js'
 import randomNumberGen from '../HelperFunctions/RandomNumberGen.js'
 import javaScriptSortedArray from '../HelperFunctions/JavaScriptSortedArrayGen.js'
 import automateSortingAlgorithmsTest from '../Tests/AutomateSortingAlgorithmsTest.js'
-import HeaderBanner from '../HeaderBanner/HeaderBanner'
-import Aux from '../hoc/Auxiliary'
-
+import HeaderBanner from '../Toolbar/Toolbar.js'
+import Aux from '../hoc/Auxiliary.js'
 
 
 class SortingVisualiser extends Component {
     constructor(props) {
         super(props)
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeSize = this.handleChangeSize.bind(this)
+        this.handleChangeSpeed = this.handleChangeSpeed.bind(this)
         this.state = {
             array: [],
-            visualisationSpeed: 20,
+            visualisationSpeed: 40,
             arraySize: 80,
-            sortingAlgorithm: null,
-            sortRunning: null,
+            sortingAlgorithm: ' ',
+            sortRunning: true,
         }  
     }
 
@@ -31,10 +31,14 @@ class SortingVisualiser extends Component {
     
     }
 
-    handleChange(e){
-        this.setState({arraySize: e.target.value});
-        console.log(this.state.arraySize)
+    handleChangeSize(e){
+        this.setState({arraySize: e.target.value})
         this.componentDidMount()
+    }
+
+    
+    handleChangeSpeed(e){
+        this.setState({visualisationSpeed: e.target.value})
     }
 
 
@@ -52,13 +56,13 @@ class SortingVisualiser extends Component {
         for (let i = 0; i < bubbleSortVisualisations.length; i++) {
             const allArrayBars = document.getElementsByClassName('arrayBars')
             if (bubbleSortVisualisations[i][0] === "change colour") {
-                const colour = bubbleSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
+                const colour = bubbleSortVisualisations[i][3] === "first colour" ? '#72FF00' : '#ff7b23'
                 const firstBarIdx = bubbleSortVisualisations[i][1]
                 const secondBarIdx = bubbleSortVisualisations[i][2]
                 setTimeout(() => {
                     allArrayBars[firstBarIdx].style.backgroundColor = colour
                     allArrayBars[secondBarIdx].style.backgroundColor = colour
-                }, i * this.state.visualisationSpeed)
+                }, (i * 2000)/this.state.visualisationSpeed)
             } else {
                 setTimeout(() => {
                     const firstBarIdx = bubbleSortVisualisations[i][1]
@@ -67,7 +71,7 @@ class SortingVisualiser extends Component {
                     const updateSecondBarHeight = bubbleSortVisualisations[i][4]
                     allArrayBars[firstBarIdx].style.height = `${updateFirstBarHeight}px`
                     allArrayBars[secondBarIdx].style.height = `${updateSecondBarHeight}px`
-                  }, i * this.state.visualisationSpeed)
+                  }, (i * 2000)/this.state.visualisationSpeed)
             } 
         }
     }
@@ -78,13 +82,13 @@ class SortingVisualiser extends Component {
         for (let i = 0; i < selectionSortVisualisations.length; i++) {
             const allArrayBars = document.getElementsByClassName('arrayBars')
             if (selectionSortVisualisations[i][0] === "change colour") {
-                const colour = selectionSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
+                const colour = selectionSortVisualisations[i][3] === "first colour" ? '#72FF00' : '#ff7b23'
                 const firstBarIdx = selectionSortVisualisations[i][1]
                 const secondBarIdx = selectionSortVisualisations[i][2]
                 setTimeout(() => {
                     allArrayBars[firstBarIdx].style.backgroundColor = colour
                     allArrayBars[secondBarIdx].style.backgroundColor = colour
-                }, i * this.state.visualisationSpeed)
+                }, (i * 2000)/this.state.visualisationSpeed)
             } else {
                 setTimeout(() => {
                     const firstBarIdx = selectionSortVisualisations[i][1]
@@ -93,7 +97,7 @@ class SortingVisualiser extends Component {
                     const updateSecondBarHeight = selectionSortVisualisations[i][4]
                     allArrayBars[firstBarIdx].style.height = `${updateFirstBarHeight}px`
                     allArrayBars[secondBarIdx].style.height = `${updateSecondBarHeight}px`
-                  }, i * this.state.visualisationSpeed)
+                  }, (i * 2000)/this.state.visualisationSpeed)
             } 
         }
     }
@@ -101,24 +105,22 @@ class SortingVisualiser extends Component {
 
     mergeSort() {
         const mergeSortVisualisations = mergeSorted(this.state.array)
-        console.log(mergeSortVisualisations)
-
         for (let i = 0; i < mergeSortVisualisations.length; i++) {
             const allArrayBars = document.getElementsByClassName('arrayBars')
             if (mergeSortVisualisations[i][0] === "change colour") {
-                const colour = mergeSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
+                const colour = mergeSortVisualisations[i][3] === "first colour" ? '#72FF00' : '#ff7b23'
                 const firstBarIdx = mergeSortVisualisations[i][1]
                 const secondBarIdx = mergeSortVisualisations[i][2]
                 setTimeout(() => {
                     allArrayBars[firstBarIdx].style.backgroundColor = colour
                     allArrayBars[secondBarIdx].style.backgroundColor = colour
-                }, i * this.state.visualisationSpeed)
+                }, (i * 2000)/this.state.visualisationSpeed)
             } else {
                 setTimeout(() => {
                     const firstBarIdx = mergeSortVisualisations[i][1]
                     const updateFirstBarHeight = mergeSortVisualisations[i][2]
                     allArrayBars[firstBarIdx].style.height = `${updateFirstBarHeight}px`
-                  }, i * this.state.visualisationSpeed)
+                  }, (i * 2000)/this.state.visualisationSpeed)
             } 
         }
     }
@@ -126,18 +128,16 @@ class SortingVisualiser extends Component {
 
     insertionSort() {
         const selectionSortVisualisations = insertionSorted(this.state.array)
-        console.log(this.state.array)
-        console.log(selectionSortVisualisations)
         for (let i = 0; i < selectionSortVisualisations.length; i++) {
             const allArrayBars = document.getElementsByClassName('arrayBars')
             if (selectionSortVisualisations[i][0] === "change colour") {
-                const colour = selectionSortVisualisations[i][3] === "first colour" ? 'green' : 'orange'
+                const colour = selectionSortVisualisations[i][3] === "first colour" ? '#72FF00' : '#ff7b23'
                 const firstBarIdx = selectionSortVisualisations[i][1]
                 const secondBarIdx = selectionSortVisualisations[i][2]
                 setTimeout(() => {
                     allArrayBars[firstBarIdx].style.backgroundColor = colour
                     allArrayBars[secondBarIdx].style.backgroundColor = colour
-                }, i * this.state.visualisationSpeed)
+                }, (i * 2000)/this.state.visualisationSpeed)
             } else {
                 setTimeout(() => {
                     const firstBarIdx = selectionSortVisualisations[i][1]
@@ -146,9 +146,24 @@ class SortingVisualiser extends Component {
                     const updateSecondBarHeight = selectionSortVisualisations[i][4]
                     allArrayBars[firstBarIdx].style.height = `${updateFirstBarHeight}px`
                     allArrayBars[secondBarIdx].style.height = `${updateSecondBarHeight}px`
-                  }, i * this.state.visualisationSpeed)
+                  }, (i * 2000)/this.state.visualisationSpeed)
             } 
         }
+    }
+
+    sortArray() {
+        if(this.state.sortingAlgorithm === 'bubbleSort') {
+            this.bubbleSort()
+        } else if(this.state.sortingAlgorithm === 'selectionSort') {
+            this.selectionSort()
+        } else if(this.state.sortingAlgorithm === 'mergeSort') {
+            this.mergeSort()
+        } else if(this.state.sortingAlgorithm === 'insertionSort') {
+            this.selectionSort()
+        } else {
+            alert("Please select a sorting algorithm!")
+        }
+        console.log(this.state.sortingAlgorithm)
     }
 
 
@@ -157,18 +172,17 @@ class SortingVisualiser extends Component {
             <Aux>
             <HeaderBanner 
                 generateNewArray={() => this.generateNewArray()}
-                bubbleSort={() => this.bubbleSort()}
-                selectionSort={() => this.selectionSort()}
-                mergeSort={() => this.mergeSort()}
-                insertionSort={() => this.insertionSort()}
-
-
+                bubbleSort={() => this.setState({sortingAlgorithm: 'bubbleSort'})}
+                selectionSort={() => this.setState({sortingAlgorithm: 'selectionSort'})}
+                mergeSort={() => this.setState({sortingAlgorithm: 'mergeSort'})}
+                insertionSort={() => this.setState({sortingAlgorithm: 'insertionSort'})}
+                sortArray={() => this.sortArray()}
             />
             <div className="container">
             {this.state.array.map((value, idx) => (
                 <div 
                   className="arrayBars" 
-                  style={{height: `${value}px`, width: `${150/this.state.array.length}px`}}
+                  style={{height: `${value}px`, width: `${150/this.state.array.length*3}px`}}
                   key={idx}
                   > 
             </div>
@@ -178,11 +192,11 @@ class SortingVisualiser extends Component {
                 Change Size Of Array:  
                 <input
                 type="range"
-                min={5}
+                min={6}
                 max={150}
                 value={this.state.arraySize} 
                 name="arraySize" 
-                onChange={this.handleChange}
+                onChange={this.handleChangeSize}
                 disabled={this.sortRunning ? "disabled" : null}
                 />
             </div>
@@ -190,15 +204,14 @@ class SortingVisualiser extends Component {
                 Change Speed Of Animations:  
                 <input
                 type="range"
-                min={5}
+                min={8}
                 max={150}
-                value={this.state.arraySize} 
-                name="arraySize" 
-                onChange={this.handleChange}
+                value={this.state.visualisationSpeed} 
+                name="visualisationSpeed" 
+                onChange={this.handleChangeSpeed}
                 disabled={this.sortRunning ? "disabled" : null}
                 />
             </div>
-
             </Aux>
         )
     }

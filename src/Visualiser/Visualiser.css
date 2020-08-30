@@ -1,27 +1,36 @@
 .arrayBars {
-    background-color: orange;
+    background-color:#ff7b23;
     display: inline-block;
     margin: 0 1px;
 }
 
 .container {
-    position: relative;
+    position: fixed;
     background-color: #001519;
-    margin: 65px;
-    height: 450px;
+    bottom: 150px;
 }
 
 .arraySize {
     color: #00d4FF;
-    position: relative;
+    position: fixed;
     margin: 10px;
     font-size: 18px;
+    bottom: 85px;
 }
 
 
 .visualisationSpeed {
     color: #00d4FF;
-    position: relative;
+    position: fixed;
     margin: 10px 10px;
     font-size: 18px;
+    bottom: 45px;
 }
+
+
+
+@media only screen and (max-width: 1100px) {
+    .arrayBars {
+        margin: 0 0.5px;
+    }
+  }

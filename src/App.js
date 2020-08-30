@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Visualiser from './Visualiser/Visualiser.js'
-import HeaderBanner from './HeaderBanner/HeaderBanner.js'
+import Toolbar from './Toolbar/Toolbar.js'
 
 function App() {
   return (
