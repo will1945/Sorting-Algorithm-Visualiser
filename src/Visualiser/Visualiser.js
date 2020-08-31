@@ -205,7 +205,7 @@ class SortingVisualiser extends Component {
                 <input
                 type="range"
                 min={8}
-                max={150}
+                max={160}
                 value={this.state.visualisationSpeed} 
                 name="visualisationSpeed" 
                 onChange={this.handleChangeSpeed}
