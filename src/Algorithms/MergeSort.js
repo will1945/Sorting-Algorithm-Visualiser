@@ -1,12 +1,12 @@
 import React from 'react'
 
+
  const mergeSorted = (array) => {
     const tempArray = array.slice()
     const visualisationsArray = []
     mergeSort(array, visualisationsArray, tempArray, 0, array.length - 1)
     return visualisationsArray
   }
-  
   
   const mergeSort = (array, visualisationsArray, tempArray, leftIdx, rightIdx) => {
       if (leftIdx === rightIdx) {

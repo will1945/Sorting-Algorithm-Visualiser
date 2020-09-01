@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const insertionSorted = (array) => {
     let visualisationsArray = []
     for (let i = 1; i < array.length; i++) {

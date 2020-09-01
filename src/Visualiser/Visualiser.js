@@ -22,7 +22,7 @@ class SortingVisualiser extends Component {
             visualisationSpeed: 40,
             arraySize: 80,
             sortingAlgorithm: ' ',
-            sortRunning: true,
+            sortRunning: 'not running',
         }  
     }
 
@@ -43,6 +43,7 @@ class SortingVisualiser extends Component {
 
 
     generateNewArray() {
+        console.log(this.state.sortRunning)
         const newArray = []
         for (let i = 0; i < this.state.arraySize; i++) {
           newArray.push(randomNumberGen(5,500))
@@ -154,16 +155,17 @@ class SortingVisualiser extends Component {
     sortArray() {
         if(this.state.sortingAlgorithm === 'bubbleSort') {
             this.bubbleSort()
+            //this.setState({sortRunning: ''})
         } else if(this.state.sortingAlgorithm === 'selectionSort') {
             this.selectionSort()
         } else if(this.state.sortingAlgorithm === 'mergeSort') {
             this.mergeSort()
         } else if(this.state.sortingAlgorithm === 'insertionSort') {
-            this.selectionSort()
+            this.insertionSort()
         } else {
             alert("Please select a sorting algorithm!")
         }
-        console.log(this.state.sortingAlgorithm)
+        console.log(this.state.sortRunning)
     }
 
 
@@ -172,10 +174,12 @@ class SortingVisualiser extends Component {
             <Aux>
             <HeaderBanner 
                 generateNewArray={() => this.generateNewArray()}
+                getSortRunningState={this.state.sortRunning}
                 bubbleSort={() => this.setState({sortingAlgorithm: 'bubbleSort'})}
                 selectionSort={() => this.setState({sortingAlgorithm: 'selectionSort'})}
                 mergeSort={() => this.setState({sortingAlgorithm: 'mergeSort'})}
                 insertionSort={() => this.setState({sortingAlgorithm: 'insertionSort'})}
+                //sortArray={() => this.setState({sortRunning: 'RUNNING'})}
                 sortArray={() => this.sortArray()}
             />
             <div className="container">
@@ -193,11 +197,11 @@ class SortingVisualiser extends Component {
                 <input
                 type="range"
                 min={6}
-                max={150}
+                max={160}
                 value={this.state.arraySize} 
                 name="arraySize" 
                 onChange={this.handleChangeSize}
-                disabled={this.sortRunning ? "disabled" : null}
+                disabled={!this.state.sortRunning}
                 />
             </div>
             <div className="visualisationSpeed">
@@ -205,11 +209,11 @@ class SortingVisualiser extends Component {
                 <input
                 type="range"
                 min={8}
-                max={150}
+                max={160}
                 value={this.state.visualisationSpeed} 
                 name="visualisationSpeed" 
                 onChange={this.handleChangeSpeed}
-                disabled={this.sortRunning ? "disabled" : null}
+                disabled={!this.state.sortRunning}
                 />
             </div>
             </Aux>

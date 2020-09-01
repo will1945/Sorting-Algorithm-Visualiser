@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const selectionSorted = (array) => {
     let visualisationsArray = []
     for (let i = 0; i < array.length; i++) {
@@ -18,7 +19,6 @@ const selectionSorted = (array) => {
             visualisationsArray.push(["change height", i, array[i], idxOfMin, array[idxOfMin]])
         }
     } 
-    //console.log(visualisationsArray)
     return visualisationsArray
 }
 
