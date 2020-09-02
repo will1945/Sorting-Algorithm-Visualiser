@@ -11,7 +11,7 @@ const headerBanner = (props) => {
             <button onClick={props.bubbleSort}>Bubble Sort</button>
             <button onClick={props.selectionSort}>Selection Sort</button>
             <button onClick={props.mergeSort}>Merge Sort</button>
-            <button onClick={props.sortArray}>Begin Sort</button>
+            <button onClick={props.sortArray}>Begin Sorting</button>
         </div>
     )
 }

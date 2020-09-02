@@ -155,7 +155,6 @@ class SortingVisualiser extends Component {
     sortArray() {
         if(this.state.sortingAlgorithm === 'bubbleSort') {
             this.bubbleSort()
-            //this.setState({sortRunning: ''})
         } else if(this.state.sortingAlgorithm === 'selectionSort') {
             this.selectionSort()
         } else if(this.state.sortingAlgorithm === 'mergeSort') {
@@ -179,7 +178,7 @@ class SortingVisualiser extends Component {
                 selectionSort={() => this.setState({sortingAlgorithm: 'selectionSort'})}
                 mergeSort={() => this.setState({sortingAlgorithm: 'mergeSort'})}
                 insertionSort={() => this.setState({sortingAlgorithm: 'insertionSort'})}
-                //sortArray={() => this.setState({sortRunning: 'RUNNING'})}
+
                 sortArray={() => this.sortArray()}
             />
             <div className="container">

@@ -8,8 +8,6 @@ import mergeSorted from '../Algorithms/MergeSort.js'
 import insertionSorted from '../Algorithms/InsertionSort.js'
 
 
-
-
 const automateSortingAlgorithmsTest = () => {
     for (let i = 0; i < 100 ; i++) {
         const array = [];
