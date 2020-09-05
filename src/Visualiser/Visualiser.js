@@ -196,7 +196,7 @@ class SortingVisualiser extends Component {
                 <input
                 type="range"
                 min={6}
-                max={160}
+                max={150}
                 value={this.state.arraySize} 
                 name="arraySize" 
                 onChange={this.handleChangeSize}
