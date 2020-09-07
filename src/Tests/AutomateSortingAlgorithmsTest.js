@@ -11,7 +11,7 @@ import insertionSorted from '../Algorithms/InsertionSort.js'
 const automateSortingAlgorithmsTest = () => {
     for (let i = 0; i < 100 ; i++) {
         const array = [];
-        for (let j = 0; j < RandomNumberGen(1, 250); j++) {
+        for (let j = 0; j < RandomNumberGen(1, 500); j++) {
             array.push(RandomNumberGen(1,1000))
         }
         console.log(testArraysEqual(javaScriptSortedArray(array), insertionSorted(array)))
